@@ -88,7 +88,6 @@ require('lazy').setup({
       require 'config/keymaps/formatter'.setup()
       require 'config/keymaps/shortcuts'.setup()
     end
-    
   },
   {
     'evanleck/vim-svelte',
@@ -112,6 +111,8 @@ require('lazy').setup({
       "mfussenegger/nvim-dap-python",
       "theHamsta/nvim-dap-virtual-text",
       "rcarriga/nvim-dap-ui",
+      "mxsdev/nvim-dap-vscode-js",
+      {"microsoft/vscode-js-debug", build="npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"},
     },
     init = function()
       require 'debuggers'.setup()

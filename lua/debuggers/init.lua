@@ -48,6 +48,7 @@ end
 
 local function configure_debuggers()
   require'debuggers.python'.setup()
+  require'debuggers.js'.setup()
 end
 
 function M.setup()
