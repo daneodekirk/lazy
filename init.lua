@@ -124,6 +124,15 @@ require('lazy').setup({
       require('leap').create_default_mappings()
     end
   },
+  {
+    'David-Kunz/gen.nvim',
+    opts = {
+      model = 'gemma'
+    },
+    init = function()
+      require 'config.keymaps.gen'.setup()
+    end
+  }
   -- spec = {
   --   {
   --     "LazyVim/LazyVim",
