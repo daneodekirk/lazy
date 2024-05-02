@@ -127,7 +127,7 @@ require('lazy').setup({
   {
     'David-Kunz/gen.nvim',
     opts = {
-      model = 'gemma'
+      model = 'gemma:latest'
     },
     init = function()
       require 'config.keymaps.gen'.setup()
