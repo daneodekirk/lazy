@@ -110,7 +110,8 @@ require('lazy').setup({
     dependencies = {
       "mfussenegger/nvim-dap-python",
       "theHamsta/nvim-dap-virtual-text",
-      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "rcarriga/nvim-dap-ui", -- https://github.com/LazyVim/LazyVim/issues/2764
       "mxsdev/nvim-dap-vscode-js",
       {"microsoft/vscode-js-debug", build="npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"},
     },
@@ -127,7 +128,8 @@ require('lazy').setup({
   {
     'David-Kunz/gen.nvim',
     opts = {
-      model = 'gemma:latest'
+      model = 'llama3:latest'
+      -- model = 'gemma:latest'
     },
     init = function()
       require 'config.keymaps.gen'.setup()
