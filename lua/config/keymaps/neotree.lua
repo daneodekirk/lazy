@@ -4,10 +4,8 @@ function M.setup()
   local wk = require 'which-key'
 
   local keymap = {
-    n = {
-      name = 'Neotree',
-      t = {'<cmd>:Neotree <cr>', 'Open tree' },
-    }
+    name = 'Neotree',
+    a = { '<cmd>:Neotree <cr>', 'Open tree' }
   }
 
   wk.register(keymap, {
