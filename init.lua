@@ -130,7 +130,11 @@ require('lazy').setup({
   {
     'David-Kunz/gen.nvim',
     opts = {
-      model = 'llama3:latest'
+      model = 'llama3:latest',
+      display_mode = 'split',
+      show_model = true,
+      debug=false,
+      no_auto_close  = true,
       -- model = 'gemma:latest'
     },
     init = function()
