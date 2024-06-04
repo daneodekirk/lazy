@@ -24,6 +24,7 @@ require('lazy').setup({
     'lewis6991/gitsigns.nvim',
     opts = {
       signcolumn = auto,
+      current_line_blame = true,
       on_attach = function()
         vim.wosigncolumn = "yes"
       end
@@ -48,7 +49,8 @@ require('lazy').setup({
   {
     'rose-pine/neovim',
     init = function()
-      vim.cmd('colorscheme rose-pine')
+      -- vim.cmd('colorscheme rose-pine')
+      vim.cmd('colorscheme habamax')
     end
   },
   {
