@@ -7,7 +7,7 @@ function M.setup()
   cmp.setup({
     mapping = {
       -- `Tab` key to confirm completion
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      ['<Enter>'] = cmp.mapping.confirm({ select = true }),
 
       -- Ctrl+Space to trigger completion menu
       ['<C-Space>'] = cmp.mapping.complete(),
