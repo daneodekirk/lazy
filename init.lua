@@ -13,11 +13,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('config.opts')
+require('config.icons').setup()
 require('lazy').setup({
   {
     'folke/which-key.nvim',
     init = function()
       require 'config.keymaps.navigation'.setup()
+      --require'config.keymaps.tmux'.setup()
     end
   },
   {
@@ -142,7 +144,7 @@ require('lazy').setup({
     end
   },
   {
-     "nvim-neo-tree/neo-tree.nvim",
+    "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -163,16 +165,81 @@ require('lazy').setup({
     init = function()
       require 'config.keymaps.neotree'.setup()
     end
+  },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies= { "nvim-tree/nvim-web-devicons", },
+    init = function()
+      require'lualine'.setup{
+        sections = {
+          lualine_b = {
+            'branch', 'diff',
+            {'diagnostics', symbols = {error = '', warn = '', info = '', hint = ''}, }
+          },
+        }
+      }
+    end
+  },
+  {
+    'mbbill/undotree',
+  },
+  {
+    'folke/trouble.nvim',
+    init = function()
+      require'trouble'.setup()
+    end,
+    opts = {},
+    cmd='Trouble',
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Diagnostics (Trouble)",
+      },
+      {
+        "<leader>xX",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Buffer Diagnostics (Trouble)",
+      },
+      {
+        "<leader>cs",
+        "<cmd>Trouble symbols toggle focus=false<cr>",
+        desc = "Symbols (Trouble)",
+      },
+      {
+        "<leader>cl",
+        "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+        desc = "LSP Definitions / references / ... (Trouble)",
+      },
+      {
+        "<leader>xL",
+        "<cmd>Trouble loclist toggle<cr>",
+        desc = "Location List (Trouble)",
+      },
+      {
+        "<leader>xQ",
+        "<cmd>Trouble qflist toggle<cr>",
+        desc = "Quickfix List (Trouble)",
+      },
+    }
+  },
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
   }
-  -- spec = {
-  --   {
-  --     "LazyVim/LazyVim",
-  --     import = "lazyvim.plugins"
-  --   },
-  --   { import = "lazyvim.plugins.extras.dap.core" },
-  --   { import = "plugins" },
-  -- },
-
 })
 
 
