@@ -30,7 +30,10 @@ require('lazy').setup({
       on_attach = function()
         vim.wosigncolumn = "yes"
       end
-    }
+    },
+    init = function ()
+      require'config.keymaps.gitsigns'.setup()
+    end
   },
   {
     'akinsho/toggleterm.nvim',
@@ -239,6 +242,9 @@ require('lazy').setup({
       { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
+    init = function()
+      vim.g.tmux_navigator_disable_when_zoomed = 1
+    end
   }
 })
 
