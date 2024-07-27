@@ -1,6 +1,6 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x', -- todo
+  branch = 'v3.x', -- todo
   dependencies = {
     { 'neovim/nvim-lspconfig' }, -- Required
     {                            -- Optional
