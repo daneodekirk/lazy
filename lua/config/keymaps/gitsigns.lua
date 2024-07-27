@@ -5,8 +5,8 @@ function M.setup()
 
   local keymap = {
     name = 'Git',
-    gp = { '<cmd>:GitSigns preview_hunk_inline <cr>', 'Preview hunk inline' },
-    gr = { '<cmd>:GitSigns reset_hunk<cr>', 'Reset hunk' },
+    gp = { '<cmd>:Gitsigns preview_hunk_inline<cr>', 'Preview hunk inline' },
+    gr = { '<cmd>:Gitsigns reset_hunk<cr>', 'Reset hunk' },
   }
 
   wk.register(keymap, {

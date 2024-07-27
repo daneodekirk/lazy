@@ -5,9 +5,9 @@ function M.setup()
 
   local keymap = {
     name = 'Gen',
-    g = { '<cmd>:Gen <cr>', 'Options' },
-    gc = { '<cmd>:Gen Chat<cr>', 'Options' },
-    gm = { '<cmd>:lua require\'gen\'.select_model() <cr>', 'Options' },
+    g = { '<cmd>:Gen <cr>', 'Gen' },
+    gc = { '<cmd>:Gen Chat<cr>', 'Chat' },
+    gm = { '<cmd>:lua require\'gen\'.select_model() <cr>', 'Select model' },
   }
 
   wk.register(keymap, {
