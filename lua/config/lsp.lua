@@ -13,26 +13,13 @@ function M.setup(_)
   end)
 
   require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls()) -- Optional
-
-  -- I want to use pyright only for autocomplete, the errors are quite annoying
-  -- This fix for working with ruff works, even though I'm not using Ruff
-  require('lspconfig').pyright.setup {
+  require('lspconfig').basedpyright.setup({
     settings = {
-      pyright = {
-        -- Using Ruff's import organizer
-        disableOrganizeImports = true,
-      },
-      python = {
-        analysis = {
-          -- Ignore all files for analysis to exclusively use Ruff for linting
-          -- ignore = { '*' },
-          -- https://github.com/jmpaz/dotfiles/commit/ad8daf740cc0d3900e95f192832b4258729656d8
-          typeCheckingMode = 'off'
-        },
-      },
+      basedpyright = {
+        typeCheckingMode = "standard"
+      }
     }
-  }
-
+  })
 
   -- Few things to note here: 
   --   The Godot LSP needs to run on the Windows nameserver in WSL (you can get this from cat /etc/resolve.conf)
