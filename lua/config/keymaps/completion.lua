@@ -5,6 +5,10 @@ function M.setup()
   local cmp_action = require('lsp-zero').cmp_action()
 
   cmp.setup({
+    sources = {
+      { name = "nvim_lsp"},
+      { name = 'nvim_lsp_signature_help' },
+    },
     mapping = {
       -- `Tab` key to confirm completion
       ['<Enter>'] = cmp.mapping.confirm({ select = true }),
