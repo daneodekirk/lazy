@@ -4,18 +4,11 @@ function M.setup()
   local wk = require 'which-key'
 
   local keymap = {
-    name = 'Mason',
-    m = { '<cmd>:Mason <cr>', 'Open Mason' }
+    { "<leader>", group = "Mason", nowait = false, remap = false },
+    { "<leader>m", "<cmd>:Mason <cr>", desc = "Open Mason", nowait = false, remap = false },
   }
 
-  wk.register(keymap, {
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  })
+  wk.add(keymap)
 end
 
 return M

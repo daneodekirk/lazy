@@ -4,21 +4,12 @@ function M.setup()
   local wk = require 'which-key'
 
   local keymap = {
-    name = 'Format',
-    s = {
-      f = {'<cmd>lua vim.lsp.buf.format({ async = true })<cr>', 'Format Current File' },
-      u = {'<cmd>:update <cr>', 'Save file' }
-    }
+    { "<leader>", group = "Format", nowait = false, remap = false },
+    { "<leader>sf", "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", desc = "Format Current File", nowait = false, remap = false },
+    { "<leader>su", "<cmd>:update <cr>", desc = "Save file", nowait = false, remap = false },
   }
 
-  wk.register(keymap, {
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  })
+  wk.add(keymap)
 
 end
 

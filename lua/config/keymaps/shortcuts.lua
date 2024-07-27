@@ -4,18 +4,11 @@ function M.setup()
   local wk = require 'which-key'
 
   local keymap = {
-    name = 'Lazy',
-    l = { '<cmd>:Lazy <cr>', 'Open Lazy' }
+    { "<leader>", group = "Lazy", nowait = false, remap = false },
+    { "<leader>l", "<cmd>:Lazy <cr>", desc = "Open Lazy", nowait = false, remap = false },
   }
 
-  wk.register(keymap, {
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  })
+  wk.add(keymap)
 end
 
 return M

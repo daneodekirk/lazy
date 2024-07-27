@@ -4,19 +4,12 @@ function M.setup()
   local wk = require 'which-key'
 
   local keymap = {
-    name = 'Git',
-    gp = { '<cmd>:Gitsigns preview_hunk_inline<cr>', 'Preview hunk inline' },
-    gr = { '<cmd>:Gitsigns reset_hunk<cr>', 'Reset hunk' },
+    { "<leader>", group = "Git", nowait = false, remap = false },
+    { "<leader>gp", "<cmd>:Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline", nowait = false, remap = false },
+    { "<leader>gr", "<cmd>:Gitsigns reset_hunk<cr>", desc = "Reset hunk", nowait = false, remap = false },
   }
 
-  wk.register(keymap, {
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  })
+  wk.add(keymap)
 end
 
 return M

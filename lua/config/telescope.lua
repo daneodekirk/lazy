@@ -7,22 +7,17 @@ function M.setup()
   require'telescope'.load_extension 'live_grep_args'
 
   local keymap = {
-    f = {
-      name = 'Telescope',
-      f = { '<cmd>Telescope find_files<cr>', 'Find file' },
-      d = { '<cmd>Telescope file_browser<cr>', 'Directories' },
-      g = { ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', 'File grep' },
-      v = { ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()<CR>', 'Grep visual selection' },
-      b = { '<cmd>Telescope buffers<cr>', 'Buffers' },
-      k = { '<cmd>Telescope keymaps<cr>', 'Keymaps' },
-      a = { '<cmd>Telescope <cr>', 'List all telescopes' },
-    }
+    { "<leader>f", group = "Telescope" },
+    { "<leader>fa", "<cmd>Telescope <cr>", desc = "List all telescopes" },
+    { "<leader>fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+    { "<leader>fd", "<cmd>Telescope file_browser<cr>", desc = "Directories" },
+    { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
+    { "<leader>fg", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', desc = "File grep" },
+    { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
+    { "<leader>fv", ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()<CR>', desc = "Grep visual selection" },
   }
 
-  whichkey.register(keymap, {
-    prefix = '<leader>'
-  })
-
+  whichkey.add(keymap)
 
 end
 
