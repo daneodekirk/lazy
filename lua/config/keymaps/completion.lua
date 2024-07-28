@@ -12,8 +12,8 @@ function M.setup()
       { name = 'nvim_lsp_signature_help' },
     },
     mapping = cmp.mapping.preset.insert({
-      -- `Tab` key to confirm completion
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+      -- `Enter` key to confirm completion
+      ['<Enter>'] = cmp.mapping.confirm({ select = true }),
 
       -- Ctrl+Space to trigger completion menu
       ['<C-Space>'] = cmp.mapping.complete(),
@@ -27,7 +27,6 @@ function M.setup()
         require('luasnip').lsp_expand(args.body)
       end
     }
-    
   })
 end
 
