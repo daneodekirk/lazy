@@ -17,5 +17,5 @@ require('config.icons').setup()
 require('lazy').setup({
   { import = "plugins" },
   { import = "plugins.dap" },
-  { import = "plugins.colorschemes" },
+  { import = "plugins.ui" },
 })

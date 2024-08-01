@@ -6,6 +6,25 @@ function M.setup()
   require'telescope'.load_extension 'file_browser'
   require'telescope'.load_extension 'live_grep_args'
 
+  require'telescope'.setup({
+    extensions = {
+      import = {
+        -- Add imports to the top of the file keeping the cursor in place
+        insert_at_top = true,
+        -- Support additional languages
+        custom_languages = {
+          {
+            -- The regex pattern for the import statement
+            regex = [[^(?:import(?:[\"'\s]*([\w*{}\n, ]+)from\s*)?[\"'\s](.*?)[\"'\s].*)]],
+            filetypes = { "typescript", "typescriptreact", "javascript", "react", "python" },
+            -- The filetypes that ripgrep supports (find these via `rg --type-list`)
+            extensions = { "js", "ts", "py" },
+          },
+        },
+      },
+    },
+  })
+
   local keymap = {
     { "<leader>f", group = "Telescope" },
     { "<leader>fa", "<cmd>Telescope <cr>", desc = "List all telescopes" },

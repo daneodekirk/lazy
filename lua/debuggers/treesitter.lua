@@ -6,7 +6,15 @@ local function configure()
     highlight = {
       enabled = true
     },
-    ensure_installed = { 'python', 'lua', 'javascript', 'typescript', 'tsx', 'markdown', 'markdown_inline' }
+    ensure_installed = {
+      'python',
+      'lua',
+      'javascript',
+      'typescript',
+      'tsx',
+      'markdown',
+      'markdown_inline',
+    }
   }
 
 end
