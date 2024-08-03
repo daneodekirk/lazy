@@ -17,7 +17,7 @@ return {
       }
     }
   },
-  init = function()
-    require 'config.keymaps.neotree'.setup()
-  end
+  keys = {
+    { "<leader>a", "<cmd>:Neotree <cr>", desc = "Open tree" },
+  }
 }

@@ -7,7 +7,8 @@ return {
       vim.wosigncolumn = "yes"
     end
   },
-  init = function()
-    require 'config.keymaps.gitsigns'.setup()
-  end
+  keys = {
+    { "<leader>gp", "<cmd>:Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline", nowait = false, remap = false },
+    { "<leader>gr", "<cmd>:Gitsigns reset_hunk<cr>", desc = "Reset hunk", nowait = false, remap = false },
+  }
 }
