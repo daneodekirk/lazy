@@ -28,7 +28,7 @@ function M.setup(_)
         require('lspconfig').basedpyright.setup({
           settings = {
             basedpyright = {
-              typeCheckingMode = "standard"
+              typeCheckingMode = "off"
             }
           }
         })
