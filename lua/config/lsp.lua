@@ -1,3 +1,4 @@
+local os = require('config.os')
 local M = {}
 
 function M.setup(_)
@@ -12,9 +13,10 @@ function M.setup(_)
     })
   end)
 
-  require('mason').setup({})
+  require('mason').setup()
   require('mason-lspconfig').setup({
     handlers = {
+      -- auto config any lsp installed with mason
       function(server_name)
         require('lspconfig')[server_name].setup({})
       end,
@@ -36,6 +38,18 @@ function M.setup(_)
     }
   })
 
+  local cmd
+  if os.is_linux then
+    cmd = vim.lsp.rpc.connect("127.0.0.1", "6005")
+  else
+    cmd = { "ncat", "127.0.0.1", "6005" }
+  end
+
+  -- godot has its own lsp not installed with mason
+  require('lspconfig').gdscript.setup({
+    name = "godot",
+    cmd = cmd
+  })
 end
 
 return M

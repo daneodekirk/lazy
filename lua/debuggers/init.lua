@@ -1,3 +1,5 @@
+local is_windows = require('config.os').is_windows
+
 local M = {}
 
 local function configure()
@@ -29,7 +31,7 @@ local function configure()
 end
 
 local function configure_exts()
-  require'nvim-dap-virtual-text'.setup {
+  require 'nvim-dap-virtual-text'.setup {
     commented = true,
   }
 
@@ -47,16 +49,20 @@ local function configure_exts()
 end
 
 local function configure_debuggers()
-  require'debuggers.python'.setup()
-  require'debuggers.js'.setup()
+  if is_windows then
+    require 'debuggers.godot'.setup()
+  else
+    require 'debuggers.python'.setup()
+    require 'debuggers.js'.setup()
+  end
 end
 
 function M.setup()
-  configure() -- Configuration
-  configure_exts() -- Extensions
-  configure_debuggers() -- Debugger
-  require'debuggers.keymaps'.setup() -- Keymaps
-  require'debuggers.treesitter'.setup() -- Keymaps
+  configure()                            -- Configuration
+  configure_exts()                       -- Extensions
+  configure_debuggers()                  -- Debugger
+  require 'debuggers.keymaps'.setup()    -- Keymaps
+  require 'debuggers.treesitter'.setup() -- Keymaps
 end
 
 return M
