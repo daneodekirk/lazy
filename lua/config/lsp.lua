@@ -2,7 +2,6 @@ local os = require('config.os')
 local M = {}
 
 function M.setup(_)
-  vim.lsp.set_log_level('debug')
   local lsp_zero = require('lsp-zero')
 
   lsp_zero.on_attach(function(client, bufnr)
