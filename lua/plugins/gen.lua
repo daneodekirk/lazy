@@ -1,5 +1,7 @@
+local os = require('config.os')
 return {
   'David-Kunz/gen.nvim',
+  enabled = os.is_linux,
   opts = {
     model         = 'llama3.1',
     display_mode  = 'split',
