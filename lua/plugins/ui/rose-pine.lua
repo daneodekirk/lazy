@@ -1,6 +1,12 @@
 return {
   'rose-pine/neovim',
-  init = function()
+  opts = {
+    styles = {
+      transparency = true
+    }
+  },
+  config = function(_, opts)
+    require('rose-pine').setup(opts)
     vim.cmd('colorscheme rose-pine')
     -- vim.cmd('colorscheme habamax')
   end
