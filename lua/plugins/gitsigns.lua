@@ -7,7 +7,8 @@ return {
   keys = {
     { "<leader>gp", "<cmd>:Gitsigns preview_hunk_inline<cr>", desc = "Preview hunk inline", nowait = false, remap = false },
     { "<leader>gr", "<cmd>:Gitsigns reset_hunk<cr>", desc = "Reset hunk", nowait = false, remap = false },
-    { "<leader>gn", "<cmd>:Gitsigns next_hunk<cr>", desc = "Next hunk", nowait = false, remap = false },
-    { "<leader>gb", "<cmd>:Gitsigns prev_hunk<cr>", desc = "Prev hunk", nowait = false, remap = false },
+    { "<leader>ghn", "<cmd>:Gitsigns next_hunk<cr>", desc = "Next hunk", nowait = false, remap = false },
+    { "<leader>ghp", "<cmd>:Gitsigns prev_hunk<cr>", desc = "Prev hunk", nowait = false, remap = false },
+    { "<leader>gb", "<cmd>:Gitsigns blame<cr>", desc = "Blame", nowait = false, remap = false },
   }
 }

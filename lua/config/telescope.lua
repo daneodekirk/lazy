@@ -7,6 +7,15 @@ function M.setup()
   require'telescope'.load_extension 'live_grep_args'
 
   require'telescope'.setup({
+    opts = {
+      defaults = {
+        mappings = {
+          n = {
+            ["q"] = "close",
+          }
+        }
+      }
+    },
     extensions = {
       import = {
         -- Add imports to the top of the file keeping the cursor in place
