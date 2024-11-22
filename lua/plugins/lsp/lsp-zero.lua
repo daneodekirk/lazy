@@ -1,6 +1,6 @@
 return {
   'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x', -- todo
+  branch = 'v4.x',
   dependencies = {
     { 'neovim/nvim-lspconfig' }, -- Required
     {                            -- Optional
@@ -13,7 +13,7 @@ return {
     {
       "hrsh7th/cmp-nvim-lsp-signature-help"
     },
-    { 'L3MON4D3/LuaSnip' },                  -- Required
+    { 'L3MON4D3/LuaSnip' }, -- Required
     -- Debuggers (DAP)
     "mfussenegger/nvim-dap",
     "jay-babu/mason-nvim-dap.nvim",
@@ -21,7 +21,7 @@ return {
   init = function()
     require 'config/lsp'.setup()
     require 'config/keymaps/completion'.setup()
-    require 'config/keymaps/mason'.setup()
+    -- require 'config/keymaps/mason'.setup()
     require 'config/keymaps/formatter'.setup()
     require 'config/keymaps/shortcuts'.setup()
   end

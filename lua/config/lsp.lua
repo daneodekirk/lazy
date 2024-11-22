@@ -4,13 +4,32 @@ local M = {}
 function M.setup(_)
   local lsp_zero = require('lsp-zero')
 
-  lsp_zero.on_attach(function(client, bufnr)
-    -- see :help lsp-zero-keybindings for available actions
-    lsp_zero.default_keymaps({
-      buffer = bufnr,
-      preserve_mappings = false,
-    })
-  end)
+  local lsp_attach = function(_, bufnr)
+    lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+  end
+
+  lsp_zero.extend_lspconfig({
+    capabilities = require('cmp_nvim_lsp').default_capabilities(),
+    lsp_attach = lsp_attach,
+    float_border = 'rounded',
+    sign_text = true,
+  })
+
+  
+  local cmp = require('cmp')
+
+  cmp.setup({
+    sources = {
+      {name = 'nvim_lsp'},
+    },
+    snippet = {
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body)
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({}),
+  })
+
 
   require('mason').setup()
   require('mason-lspconfig').setup({
