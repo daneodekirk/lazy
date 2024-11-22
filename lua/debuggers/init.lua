@@ -53,7 +53,7 @@ local function configure_debuggers()
     require 'debuggers.godot'.setup()
   else
     require 'debuggers.python'.setup()
-    require 'debuggers.js'.setup()
+    -- require 'debuggers.js'.setup()
   end
 end
 

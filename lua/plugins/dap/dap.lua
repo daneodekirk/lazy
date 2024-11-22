@@ -10,10 +10,10 @@ if is_linux then
   table.insert(dap_dependencies, "mfussenegger/nvim-dap-python")
   table.insert(dap_dependencies, "mfussenegger/nvim-dap-python")
   table.insert(dap_dependencies, "mxsdev/nvim-dap-vscode-js")
-  table.insert(dap_dependencies, {
-    "microsoft/vscode-js-debug",
-    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
-  })
+  --  table.insert(dap_dependencies, {
+  --    "microsoft/vscode-js-debug",
+  --    build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+  --  })
 end
 
 return {
