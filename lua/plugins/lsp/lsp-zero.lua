@@ -21,7 +21,7 @@ return {
   init = function()
     require 'config/lsp'.setup()
     require 'config/keymaps/completion'.setup()
-    -- require 'config/keymaps/mason'.setup()
+    require 'config/keymaps/mason'.setup()
     require 'config/keymaps/formatter'.setup()
     require 'config/keymaps/shortcuts'.setup()
   end

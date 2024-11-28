@@ -15,12 +15,11 @@ function M.setup(_)
     sign_text = true,
   })
 
-  
   local cmp = require('cmp')
 
   cmp.setup({
     sources = {
-      {name = 'nvim_lsp'},
+      { name = 'nvim_lsp' },
     },
     snippet = {
       expand = function(args)
@@ -31,21 +30,41 @@ function M.setup(_)
   })
 
 
+  local lspconfig = require('lspconfig')
+  -- local is_deno = lspconfig.util.root_pattern('deno.json', 'deno.jsonc') and true or false
+  local is_deno = lspconfig.util.root_pattern('deno.json', 'deno.jsonc')(vim.fn.getcwd()) ~= nil
+  --vim.notify("root found: " .. tostring(is_deno), vim.log.levels.INFO)
+
   require('mason').setup()
   require('mason-lspconfig').setup({
     handlers = {
       -- auto config any lsp installed with mason
       function(server_name)
-        require('lspconfig')[server_name].setup({})
+        lspconfig[server_name].setup({})
+      end,
+
+      ts_ls = function()
+        lspconfig.ts_ls.setup({ autostart = (not is_deno) })
+      end,
+
+      denols = function()
+        lspconfig.denols.setup({
+          autostart = is_deno,
+          init_options = {
+            enable = true,
+            lint = true,
+            unstable = true,
+          }
+        })
       end,
 
       lua_ls = function()
         local lua_opts = lsp_zero.nvim_lua_ls()
-        require('lspconfig').lua_ls.setup(lua_opts)
+        lspconfig.lua_ls.setup(lua_opts)
       end,
 
       basedpyright = function()
-        require('lspconfig').basedpyright.setup({
+        lspconfig.basedpyright.setup({
           settings = {
             basedpyright = {
               typeCheckingMode = "basic"
