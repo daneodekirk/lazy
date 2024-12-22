@@ -3,7 +3,7 @@ return {
   'David-Kunz/gen.nvim',
   enabled = os.is_linux,
   opts = {
-    model         = 'llama3.1',
+    model         = 'codellama:13b',
     display_mode  = 'split',
     show_model    = true,
     debug         = false,
