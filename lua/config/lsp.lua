@@ -4,8 +4,12 @@ local M = {}
 function M.setup(_)
   local lsp_zero = require('lsp-zero')
 
-  local lsp_attach = function(_, bufnr)
+  local lsp_attach = function(client, bufnr)
     lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true)
+    end
   end
 
   lsp_zero.extend_lspconfig({
