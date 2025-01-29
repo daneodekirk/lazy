@@ -42,7 +42,8 @@ function M.setup()
     { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find file" },
     { "<leader>fg", ':lua require("telescope").extensions.live_grep_args.live_grep_args()<CR>', desc = "File grep" },
     { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps" },
-    { "<leader>fv", ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()<CR>', desc = "Grep visual selection" },
+    { "<leader>fV", ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()<CR>', desc = "Grep visual selection (whole project)" },
+    { "<leader>fv", ':lua require("telescope-live-grep-args.shortcuts").grep_word_under_cursor({cwd=  vim.fn.input("Enter directory: ", vim.fn.expand("%:p:h"), "file") })<CR>', desc = "Grep visual selection (cwd)" },
   }
 
   whichkey.add(keymap)
