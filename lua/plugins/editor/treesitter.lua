@@ -18,17 +18,15 @@ if os.is_windows then
   table.insert(ensure_installed, 'gdscript')
 end
 
-local function configure()
-  require 'nvim-treesitter.configs'.setup {
-    highlight = {
-      enabled = true
-    },
-    ensure_installed = ensure_installed
-  }
-end
-
-function M.setup()
-  configure()
-end
-
-return M
+return {
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  config = function()
+    require('nvim-treesitter.configs').setup {
+      highlight = {
+        enable = true
+      },
+      ensure_installed = ensure_installed
+    }
+  end
+}

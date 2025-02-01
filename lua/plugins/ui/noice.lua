@@ -14,6 +14,7 @@ return {
           fps = '120',
           timeout=2000,
           top_down = false,
+          background_colour = "#000000",
         })
       end
 
