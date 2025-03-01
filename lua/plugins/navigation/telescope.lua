@@ -66,7 +66,7 @@ return {
 			desc = "Keymaps",
 		},
 		{
-			"<leader>fV",
+			"<leader>fa",
 			function()
 				require("telescope-live-grep-args.shortcuts").grep_word_under_cursor()
 			end,

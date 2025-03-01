@@ -18,4 +18,4 @@ vim.g.maplocalleader = ";"
 
 --- remap recording
 vim.keymap.set("n", "q", "<Nop>", {silent=true, noremap=true})
-vim.keymap.set('n', '<leader>q', 'q', { noremap=true, silent=true, desc = 'Record'})
+vim.keymap.set('n', '<leader>R', 'q', { noremap=true, silent=true, desc = 'Record'})

@@ -28,11 +28,12 @@ return {
         visible = true,
       },
       follow_current_file = {
-        enabled = true,
+        enabled = false,
       }
     }
   },
   keys = {
-    { "<leader>a", "<cmd>:Neotree <cr>", desc = "Open tree" },
+    -- { "<leader>a", "<cmd>:Neotree <cr>", desc = "Open tree" },
+    { "<leader>a", "<cmd>:Neotree reveal<cr>", desc = "Reveal file in tree" },
   }
 }
