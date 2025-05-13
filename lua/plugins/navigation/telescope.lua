@@ -34,7 +34,7 @@ return {
 			desc = "Telescope",
 		},
 		{
-			"<leader>fa",
+			"<leader>fA",
 			"<cmd>Telescope<CR>",
 			desc = "List all telescopes",
 		},
