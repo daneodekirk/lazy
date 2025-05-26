@@ -27,3 +27,4 @@ require("lazy").setup({
 	{ import = "plugins.ui" },
 	{ import = "plugins.ai" },
 })
+vim.cmd.colorscheme("rose-pine")

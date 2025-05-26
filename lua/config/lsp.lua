@@ -11,66 +11,52 @@ function M.setup()
 		end
 	end
 
-	local is_deno = lspconfig.util.root_pattern("deno.json", "deno.jsonc")(vim.fn.getcwd()) ~= nil
+	local capabilities = cmp_nvim_lsp.default_capabilities()
 
-	require("mason-lspconfig").setup({
-		ensure_installed = { "lua_ls", "ts_ls", "basedpyright" },
-		automatic_installation = true,
-		handlers = {
-			function(server_name)
-				lspconfig[server_name].setup({
-					capabilities = cmp_nvim_lsp.default_capabilities(),
-					on_attach = on_attach,
-				})
-			end,
+	-- Global defaults
+	vim.lsp.config("*", {
+		capabilities = capabilities,
+		on_attach = on_attach,
+	})
 
-			ts_ls = function()
-				lspconfig.ts_ls.setup({ autostart = true })
-			end,
-
-			-- denols = function()
-			--   lspconfig.denols.setup({
-			--     init_options = {
-			--       enable = true,
-			--       lint = true,
-			--       unstable = true,
-			--     },
-			--   })
-			-- end,
-
-			lua_ls = function()
-				lspconfig.lua_ls.setup({
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-						},
-					},
-				})
-			end,
-
-			basedpyright = function()
-				lspconfig.basedpyright.setup({
-					on_attach = on_attach,
-					settings = {
-						basedpyright = {
-							disableOrganizeImports = true,
-							analysis = {
-								autoImportCompletions = true,
-								autoSearchPaths = true,
-								useLibraryCodeForTypes = true,
-								typeCheckingMode = "basic",
-								diagnosticSeverityOverrides = {
-									reportUnusedImport = "none",
-								},
-							},
-						},
-					},
-				})
-			end,
+	vim.lsp.config("lua_ls", {
+		settings = {
+			Lua = {
+				runtime = { version = "LuaJIT" },
+				workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+			},
 		},
 	})
 
+	vim.lsp.config("basedpyright", {
+		settings = {
+			basedpyright = {
+				disableOrganizeImports = true,
+				analysis = {
+					autoImportCompletions = true,
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+					typeCheckingMode = "basic",
+					diagnosticSeverityOverrides = {
+						reportUnusedImport = "none",
+					},
+				},
+			},
+		},
+	})
+
+	vim.lsp.config("ts_ls", {
+		autostart = true,
+	})
+
+	-- require("mason-lspconfig").setup({
+	-- 	ensure_installed = { "lua_ls", "ts_ls", "basedpyright" },
+	-- 	automatic_enable = false,
+	-- })
+
+	vim.lsp.enable({ "lua_ls", "ts_ls", "basedpyright" })
+
+	-- Manual setup for Godot
 	local cmd = os.is_linux and vim.lsp.rpc.connect("127.0.0.1", 6005) or { "ncat", "127.0.0.1", "6005" }
 	lspconfig.gdscript.setup({ name = "godot", cmd = cmd })
 end
