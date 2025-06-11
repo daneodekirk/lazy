@@ -37,9 +37,9 @@ function M.setup()
 					autoSearchPaths = true,
 					useLibraryCodeForTypes = true,
 					typeCheckingMode = "basic",
-					diagnosticSeverityOverrides = {
-						reportUnusedImport = "none",
-					},
+					-- diagnosticSeverityOverrides = {
+					-- 	reportUnusedImport = "none",
+					-- },
 				},
 			},
 		},
