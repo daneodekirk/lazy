@@ -23,4 +23,3 @@ vim.keymap.set('n', '<leader>R', 'q', { noremap = true, silent = true, desc = 'R
 --- spelling always one
 vim.opt.spell = true
 vim.opt.spelllang = { 'en' }
-

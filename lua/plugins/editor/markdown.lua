@@ -1,11 +1,10 @@
 return {
-  "OXY2DEV/markview.nvim",
-  lazy = false,
+  "MeanderingProgrammer/render-markdown.nvim",
+  ft = { "markdown", "codecompanion" },
   opts = {
-    preview = {
-
-      filetypes = { "markdown", "codecompanion" },
-      ignore_buftypes = {},
+    render_modes = true,
+    sign = {
+      enabled = false,
     },
-  },
+  }
 };
