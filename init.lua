@@ -33,6 +33,6 @@ require("lazy").setup({
     { import = "plugins.navigation" },
     { import = "plugins.ui" },
     { import = "plugins.ai" },
-  }
+  },
 })
 vim.cmd.colorscheme("rose-pine")

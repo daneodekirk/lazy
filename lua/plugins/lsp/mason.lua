@@ -38,25 +38,59 @@ return {
     {
       "gd",
       function()
-        vim.cmd('vsplit')
-        vim.lsp.buf.definition()
+        vim.cmd("vsplit")
+        Snacks.picker.lsp_definitions()
+      end,
+      desc = "Go to Definition (split)",
+    },
+    {
+      "gD",
+      function()
+        Snacks.picker.lsp_definitions()
       end,
       desc = "Go to Definition",
     },
     {
-      "gD",
-      vim.lsp.buf.definition,
-      desc = "Go to Definition",
-    },
-    {
       "gi",
-      vim.lsp.buf.implementation,
+      function()
+        Snacks.picker.lsp_implementations()
+      end,
       desc = "Go to Implementation",
     },
     {
       "gr",
-      vim.lsp.buf.references,
+      function()
+        Snacks.picker.lsp_references()
+      end,
       desc = "Find References",
+    },
+    {
+      "<leader>ss",
+      function()
+        Snacks.picker.lsp_symbols()
+      end,
+      desc = "LSP Symbols",
+    },
+    {
+      "<leader>sS",
+      function()
+        Snacks.picker.lsp_workspace_symbols()
+      end,
+      desc = "LSP Workspace Symbols",
+    },
+    {
+      "gy",
+      function()
+        Snacks.picker.lsp_type_definitions()
+      end,
+      desc = "Goto T[y]pe Definition",
+    },
+    {
+      "<leader>ca",
+      function()
+        vim.lsp.buf.code_action()
+      end,
+      desc = "Code Action",
     },
   },
 }
