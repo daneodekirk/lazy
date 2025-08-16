@@ -21,6 +21,9 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons", },
   init = function()
     require 'lualine'.setup {
+      options = {
+        globalstatus = true
+      },
       sections = {
         lualine_a = {
           { 'filename', path = 4 },
