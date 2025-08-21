@@ -1,5 +1,3 @@
-local is_windows = require("config.os").is_windows
-
 local M = {}
 
 local function configure()
@@ -41,11 +39,7 @@ local function configure_exts()
 end
 
 local function configure_debuggers()
-  if is_windows then
-    require("config.debuggers.languages.godot").setup()
-  else
-    require("config.debuggers.languages.python").setup()
-  end
+  require("config.debuggers.languages.python").setup()
 end
 
 function M.setup()
