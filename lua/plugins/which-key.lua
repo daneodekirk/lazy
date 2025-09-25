@@ -1,10 +1,10 @@
 return {
   "folke/which-key.nvim",
+  event = "VeryLazy",
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
   keys = {
-    -- lazy
     { "<leader>l",        "<cmd>:Lazy <cr>",         desc = "Open Lazy" },
 
     { "<leader>b",        group = "Jump Navigation", nowait = false,        remap = false },

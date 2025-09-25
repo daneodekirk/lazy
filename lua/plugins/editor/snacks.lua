@@ -32,10 +32,30 @@ return {
           conflict = "",
         },
       },
+      sources = { explorer = { follow_file = false } }
     },
     quickfile = { enabled = true },
     scope = { enabled = true },
-    scratch = { enabled = true },
+    scratch = {
+      enabled = true,
+      filekey = { count = false, branch = false },
+      win = {
+        --- https://github.com/folke/snacks.nvim/pull/1019
+        keys = {
+          ["delete"] = {
+            "<a-x>",
+            function(self)
+              vim.api.nvim_win_call(self.win, function()
+                vim.cmd([[close]])
+                os.remove(vim.api.nvim_buf_get_name(self.buf))
+              end)
+            end,
+            desc = "Delete buffer",
+            mode = { "n", "x" },
+          },
+        },
+      },
+    },
     scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
@@ -82,7 +102,7 @@ return {
     {
       "<leader>e",
       function()
-        Snacks.explorer()
+        Snacks.explorer.reveal()
       end,
       desc = "File Explorer",
     },
@@ -299,7 +319,7 @@ return {
       function()
         Snacks.picker.keymaps()
       end,
-      desc = "Keymaps",
+      desc = "Keymaps (which key)",
     },
     {
       "<leader>sl",

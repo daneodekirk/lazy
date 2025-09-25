@@ -17,6 +17,13 @@ return {
       list = { selection = { preselect = true, auto_insert = true } },
       sources = {
         default = { 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          blink = { score_offset = 100 },
+          lsp = { score_offset = 50 },
+          snippets = { score_offset = 10 },
+          buffer = { score_offset = 5 },
+          path = { score_offset = 0 },
+        }
       },
       snippets = { preset = 'default' },
       fuzzy = { implementation = "prefer_rust_with_warning" },
