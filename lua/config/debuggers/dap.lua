@@ -1,41 +1,26 @@
 local M = {}
 
 local function configure()
-  local dap_breakpoint = {
-    error = {
-      text = "",
-      texthl = "DiagnosticSignError",
-      linehl = "",
-      numhl = "",
-    },
-    rejected = {
-      text = "",
-      texthl = "DiagnosticsSignHint",
-      linehl = "",
-      numhl = "",
-    },
-    stopped = {
-      text = "ﴫ",
-      texthl = "DiagnosticsSignInformation",
-      linehl = "DiagnosticUnderlineInfo",
-      numhl = "DiagnosticsSignInformation",
-    },
+  local signs = {
+    error = { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" },
+    rejected = { text = "", texthl = "DiagnosticsSignHint", linehl = "", numhl = "" },
+    stopped = { text = "ﴫ", texthl = "DiagnosticsSignInformation", linehl = "DiagnosticUnderlineInfo", numhl = "DiagnosticsSignInformation" },
   }
 
-  vim.fn.sign_define("DapBreakpoint", dap_breakpoint.error)
-  vim.fn.sign_define("DapStopped", dap_breakpoint.stopped)
-  vim.fn.sign_define("DapBreakpointRejected", dap_breakpoint.rejected)
+  for name, opts in pairs(signs) do
+    vim.fn.sign_define(name, opts)
+  end
 end
 
-local function configure_exts()
+local function configure_ui()
   require("nvim-dap-virtual-text").setup({ commented = true })
 
   local dap, dapui = require("dap"), require("dapui")
-  dapui.setup({}) -- use default UI
+  dapui.setup() -- use default UI
 
-  dap.listeners.after.event_initialized["dapui_config"] = function()
-    dapui.open()
-  end
+  dap.listeners.after.event_initialized["dapui_config"] = function() dapui.open() end
+  dap.listeners.before.event_terminated["dapui_config"] = function() dapui.close() end
+  dap.listeners.before.event_exited["dapui_config"] = function() dapui.close() end
 end
 
 local function configure_debuggers()
@@ -44,7 +29,7 @@ end
 
 function M.setup()
   configure()
-  configure_exts()
+  configure_ui()
   configure_debuggers()
 end
 

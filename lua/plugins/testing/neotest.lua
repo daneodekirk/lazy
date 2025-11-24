@@ -5,23 +5,29 @@ return {
     "nvim-lua/plenary.nvim",
     "antoinemadec/FixCursorHold.nvim",
     "nvim-treesitter/nvim-treesitter",
-    -- adapters 
+    -- adapters
     "nvim-neotest/neotest-python",
   },
   init = function()
     require('neotest').setup({
       adapters = {
-        require("neotest-python")
+        require("neotest-python")({
+          dap = { justMyCode = false },
+          runner = "pytest",
+        })
       }
-
     })
-  end
-  , 
+  end,
   keys = {
     {
       "<leader>nt",
-      "<cmd>Neotest run<cr>",
+      "<cmd>lua require('neotest').run.run()<cr>",
       desc = "Run nearest test",
     },
-  }
+    {
+      "<leader>nd",
+      "<cmd>lua require('neotest').run.run({ strategy = 'dap' })<cr>",
+      desc = "Debug nearest test",
+    },
+  },
 }

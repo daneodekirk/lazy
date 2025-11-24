@@ -1,23 +1,24 @@
 local M = {}
 
-function M.setup(_)
-  require("dap-python").setup()
+function M.setup()
+  local dap_python = require("dap-python")
+  local python_path = os.getenv("VIRTUAL_ENV")
+      and (os.getenv("VIRTUAL_ENV") .. "/bin/python")
+      or vim.fn.exepath("python3")
 
---  require'dap'.configurations.python = {
---    {
---      type = 'python',
---      request = 'launch',
---      module = 'flask',
---      env = {
---        FLASK_APP = 'app.py',
---        FLASK_ENV = 'development',
---        FLASK_DEBUG = 0
---      },
---      jinja = true,
---      justMyCode = false
---    }
---  }
+  dap_python.setup(python_path)
 
+  local dap = require("dap")
+
+  dap.configurations.python = {
+    {
+      type = "python",
+      request = "launch",
+      name = "Launch file",
+      program = "${file}",
+      console = "integratedTerminal",
+    }
+  }
 end
 
 return M

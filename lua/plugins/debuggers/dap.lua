@@ -1,19 +1,17 @@
-local dap_dependencies = {
-  "theHamsta/nvim-dap-virtual-text",
-  "nvim-neotest/nvim-nio",
-  "rcarriga/nvim-dap-ui",
-}
-
-table.insert(dap_dependencies, "mfussenegger/nvim-dap-python")
-table.insert(dap_dependencies, "mxsdev/nvim-dap-vscode-js")
-
 return {
   "mfussenegger/nvim-dap",
-  dependencies = dap_dependencies,
+  dependencies = {
+    "rcarriga/nvim-dap-ui",
+    "theHamsta/nvim-dap-virtual-text",
+    "nvim-neotest/nvim-nio",
+    "mfussenegger/nvim-dap-python",
+    "mxsdev/nvim-dap-vscode-js",
+  },
   init = function()
     require("config.debuggers.dap").setup()
   end,
   keys = {
+
     {
       "<leader>d",
       group = "Debug",
